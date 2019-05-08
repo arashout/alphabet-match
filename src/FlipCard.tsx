@@ -1,20 +1,26 @@
 import * as React from 'react';
 import { Button } from 'reactstrap';
 import './FlipCard.css';
+import cardCoverImg from './assets/card_cover.png';
 
-export interface IFlipCardProps {
+export type CardState = '' | 'flipped' | 'invisible';
+export type Card = {
   value: string;
-  flipped: boolean;
+  state: CardState;
+}
+
+export interface IFlipCardProps extends Card {
   clickHandler: (flippedCard: string) => void;
 }
 
 export default function FlipCard(props: IFlipCardProps) {
   return (
-    <div className={`flip-card ${props.flipped ? 'flipped' : ''}`} onClick={() => props.clickHandler(props.value)}>
+    <div
+      className={`flip-card ${props.state}`}
+      onClick={() => props.clickHandler(props.value)}>
       <div className="flipper">
         <div className="front">
-        {/* TODO: Add an image here */}
-          <Button color='dark' outline={true}><p className='display-2'></p></Button>
+          <div className='card-cover'><img src={cardCoverImg} /></div>
         </div>
         <div className="back">
           <Button color='dark' outline={true}><p className='display-2'>{props.value}</p></Button>

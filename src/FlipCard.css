@@ -11,9 +11,9 @@
 .flip-card,
 .front,
 .back {
-    width: 20vmax;
+    width: 15vmax;
     height: 20vmax;
-    max-width: 250px;
+    max-width: 200px;
     max-height: 250px;
     margin: 1vmax;
 }
@@ -50,6 +50,11 @@
 
 div.flipper>.back>button,
 div.flipper>.front>button {
+    width: 100%;
+    height: 100%;
+}
+
+.card-cover > img {
     width: 100%;
     height: 100%;
 }

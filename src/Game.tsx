@@ -51,19 +51,18 @@ export default class Game extends React.Component<IGameProps, IGameState> {
         }
     }
 
-    finishHandler = (cards: string[]) => {
-        console.log(cards);
+    cardsFinishedHandler = (cards: string[]) => {
         const nextState = produce(this.state, draftState => {
             for (const c of cards) {
                 draftState.remainingSounds.cRemove(c);
             }
         });
-        console.log(nextState);
         this.setState(nextState);
     }
 
     successHandler = (card: string) => {
         console.log("Card matched: " + card);
+        this.setState({score: this.state.score + 1});
     }
 
     public render() {
@@ -72,8 +71,8 @@ export default class Game extends React.Component<IGameProps, IGameState> {
                 <CardContainer
                     audioPlayer={this.playAudio}
                     successHandler={this.successHandler}
-                    outOfCardsHandler={this.finishHandler}
-                    cards={this.generateCards(config.MAX_SOUND_COUNT)} />
+                    outOfCardsHandler={this.cardsFinishedHandler}
+                    cardValues={this.generateCards(config.MAX_SOUND_COUNT)} />
             </div>
         );
     }
