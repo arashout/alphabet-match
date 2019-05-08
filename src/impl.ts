@@ -24,7 +24,7 @@ Array.prototype.cRemove = function <T>(element: T): boolean {
     return false;
 }
 
-function deepCopy<T>(o: T): T {
+export function deepCopy<T>(o: T): T {
     return JSON.parse(JSON.stringify(o));
 }
 Array.prototype.cRandomChoiceExcept = function (except: any[]): any {

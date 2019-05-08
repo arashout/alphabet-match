@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import CardContainer from './CardContainer';
-
+import Game from './Game';
 // const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k']
-const mockGame = ['b', 'B', 'c', 'C', 'd', 'D', 'f', 'F'];
+const mockGame = ['b', 'c', 'd', 'f', 'g'];
 const App: React.FC = () => {
   return (
     <div className='app'>
-      <CardContainer cards={mockGame}/>
+      <Game sounds={mockGame} />
     </div>
   );
 }

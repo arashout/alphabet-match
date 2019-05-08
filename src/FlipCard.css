@@ -15,6 +15,7 @@
     height: 20vmax;
     max-width: 250px;
     max-height: 250px;
+    margin: 1vmax;
 }
 
 /* flip speed goes here */
