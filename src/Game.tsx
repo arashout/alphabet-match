@@ -12,14 +12,18 @@ export interface IGameState {
     score: number;
 }
 
+const AUDIO_KEYS = {
+    CORRECT: '_correct'
+};
+
 export default class Game extends React.Component<IGameProps, IGameState> {
     private audioMap: Map<string, HTMLAudioElement>;
 
     constructor(props: IGameProps) {
         super(props);
 
-        const getAudio = (name: string) => new Audio(require(`./assets/sounds/${name}.mp3`));
-        this.audioMap = new Map(this.props.sounds.map(s => [s, getAudio(s)]));
+        this.audioMap = new Map(this.props.sounds.map(s => [s, new Audio(require(`./assets/sounds/${s}.mp3`))]));
+        this.audioMap.set(AUDIO_KEYS.CORRECT, new Audio(require('./assets/correct.wav')));
 
         this.state = {
             remainingSounds: props.sounds,
@@ -61,7 +65,7 @@ export default class Game extends React.Component<IGameProps, IGameState> {
     }
 
     successHandler = (card: string) => {
-        console.log("Card matched: " + card);
+        this.playAudio(AUDIO_KEYS.CORRECT)
         this.setState({score: this.state.score + 1});
     }
 
