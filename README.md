@@ -7,7 +7,7 @@
 - [x] Fix the stupid offset caused by flip animation
 - [ ] Recreate L sound, because it is weird
 ## Features:
-- [ ] Add sound effects for successfully matching and failing to match 
+- [x] Add sound effects for successfully matching and failing to match 
 - [ ] Add multiple rounds
 - [x] Randomize the cards
 - [ ] Add fade-out animation for succesful match (Use pose?)

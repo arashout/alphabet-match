@@ -12,9 +12,12 @@ export interface IGameState {
     score: number;
 }
 
-const AUDIO_KEYS = {
-    CORRECT: '_correct'
+export const AUDIO_KEYS = {
+    CORRECT: '_correct',
+    FLIP: '_flip'
 };
+
+const promiseTimeout = (time: number) => () => new Promise(resolve => setTimeout(resolve, time));
 
 export default class Game extends React.Component<IGameProps, IGameState> {
     private audioMap: Map<string, HTMLAudioElement>;
@@ -24,6 +27,7 @@ export default class Game extends React.Component<IGameProps, IGameState> {
 
         this.audioMap = new Map(this.props.sounds.map(s => [s, new Audio(require(`./assets/sounds/${s}.mp3`))]));
         this.audioMap.set(AUDIO_KEYS.CORRECT, new Audio(require('./assets/correct.wav')));
+        this.audioMap.set(AUDIO_KEYS.FLIP, new Audio(require('./assets/flip.wav')));
 
         this.state = {
             remainingSounds: props.sounds,
@@ -47,12 +51,23 @@ export default class Game extends React.Component<IGameProps, IGameState> {
     }
 
     playAudio = (sound: string) => {
-        const audio = this.audioMap.get(sound);
-        if (audio) {
-            setTimeout(() => audio.play().catch((r) => console.error('Could not play audio: ' + r)), config.DELAY / 2);
-        } else {
-            console.error('Could not find audio for key: ' + sound);
+        const flipAudio = this.audioMap.get(AUDIO_KEYS.FLIP) as HTMLAudioElement;
+        if (sound === AUDIO_KEYS.FLIP) {
+            flipAudio.onended = null;
         }
+        else {
+            const audio = this.audioMap.get(sound);
+            if (!audio) {
+                console.error('Could not find audio for key: ' + sound);
+            } else {
+                flipAudio.onended = () => { audio.play().catch(r => console.error('Could not play audio: ' + r)) };
+            }
+        }
+        flipAudio
+            .play()
+            .catch((r) => console.error('Could not play audio: ' + r));
+
+
     }
 
     cardsFinishedHandler = (cards: string[]) => {
@@ -66,7 +81,7 @@ export default class Game extends React.Component<IGameProps, IGameState> {
 
     successHandler = (card: string) => {
         this.playAudio(AUDIO_KEYS.CORRECT)
-        this.setState({score: this.state.score + 1});
+        this.setState({ score: this.state.score + 1 });
     }
 
     public render() {
@@ -77,6 +92,7 @@ export default class Game extends React.Component<IGameProps, IGameState> {
                     successHandler={this.successHandler}
                     outOfCardsHandler={this.cardsFinishedHandler}
                     cardValues={this.generateCards(config.MAX_SOUND_COUNT)} />
+
             </div>
         );
     }

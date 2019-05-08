@@ -3,7 +3,7 @@ import './CardContainer.css';
 import FlipCard, { Card } from './FlipCard';
 import produce from 'immer';
 import config from './config';
-import { deepCopy } from './impl';
+import { AUDIO_KEYS } from './Game';
 
 export interface ICardContainerProps {
     cardValues: string[],
@@ -17,17 +17,7 @@ export interface ICardContainerState {
 
 }
 
-/**
- * Toggles the flipped state of a card but leaves invisible
- * @param card 
- */
-function toggleFlip(card: Card): Card {
-    if (card.state === 'invisible') {
-        return card;
-    } else {
-        return { value: card.value, state: card.state === 'flipped' ? '' : 'flipped' };
-    }
-}
+
 
 function cardsFromValues(values: string[]): Card[] {
     return values.map((c) => { return { value: c, state: '' } });
@@ -39,17 +29,33 @@ export default class CardContainer extends React.Component<ICardContainerProps, 
 
         this.state = { cards: cardsFromValues(this.props.cardValues) };
     }
-
+    /**
+     * Toggles the flipped state of a card but leaves invisible cards
+     * @param card 
+     */
+    toggleFlip(card: Card): Card {
+        if (card.state === 'invisible') {
+            return card;
+        } else if (card.state === '') {
+            this.props.audioPlayer(card.value.toLowerCase());
+            return { value: card.value, state: 'flipped' };
+        }
+        else {
+            this.props.audioPlayer(AUDIO_KEYS.FLIP);
+            return { value: card.value, state: '' };
+        }
+    }
     getNextStateForFlip = (cardValue: string): ICardContainerState => {
         const i = this.state.cards.map((c) => c.value).indexOf(cardValue);
         console.assert(i !== -1, 'Could not find element');
 
-        this.props.audioPlayer(cardValue.toLowerCase());
-
         const card = this.state.cards[i];
-        return produce(this.state, draftState => {
-            draftState.cards[i] = toggleFlip(card);
+        // NOTE: The order of these matters
+        const nextState = produce(this.state, draftState => {
+            draftState.cards[i] = this.toggleFlip(card);
         });
+
+        return nextState;
     }
 
     clickHandler = (clickedCardValue: string) => {
@@ -88,8 +94,8 @@ export default class CardContainer extends React.Component<ICardContainerProps, 
             else {
                 setTimeout(() => {
                     const nextState = produce(this.state, draftState => {
-                        draftState.cards = this.state.cards.map(c => { 
-                            return { value: c.value, state: c.state === 'invisible' ? 'invisible' : '' } 
+                        draftState.cards = this.state.cards.map(c => {
+                            return { value: c.value, state: c.state === 'invisible' ? 'invisible' : '' }
                         });
                     });
                     this.setState(nextState);
