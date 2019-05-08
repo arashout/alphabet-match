@@ -11,10 +11,10 @@
 .flip-card,
 .front,
 .back {
-    width: 15vmax;
+    width: 16vmax;
     height: 20vmax;
-    max-width: 200px;
-    max-height: 250px;
+    max-width: 160px;
+    max-height: 200px;
     margin: 1vmax;
 }
 

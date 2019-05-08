@@ -88,7 +88,9 @@ export default class CardContainer extends React.Component<ICardContainerProps, 
             else {
                 setTimeout(() => {
                     const nextState = produce(this.state, draftState => {
-                        draftState.cards = this.state.cards.map(c => { return { value: c.value, state: '' } });
+                        draftState.cards = this.state.cards.map(c => { 
+                            return { value: c.value, state: c.state === 'invisible' ? 'invisible' : '' } 
+                        });
                     });
                     this.setState(nextState);
                 }, config.DELAY)

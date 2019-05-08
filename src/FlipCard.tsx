@@ -23,7 +23,7 @@ export default function FlipCard(props: IFlipCardProps) {
           <div className='card-cover'><img src={cardCoverImg} /></div>
         </div>
         <div className="back">
-          <Button color='dark' outline={true}><p className='display-2'>{props.value}</p></Button>
+          <Button color='light'><p className='display-1'>{props.value}</p></Button>
         </div>
       </div>
     </div>)

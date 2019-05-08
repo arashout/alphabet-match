@@ -10,4 +10,7 @@
 - [ ] Add multiple rounds
 - [x] Randomize the cards
 - [ ] Add fade-out animation for succesful match (Use pose?)
-- [ ] Use a warmer color pallete to reduce eye strain
+- [x] Use a warmer color pallete to reduce eye strain
+- [ ] Add menu for difficulty settings
+- [ ] Add button to reduce audio playback
+- [ ] 
