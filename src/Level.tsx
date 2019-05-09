@@ -2,12 +2,11 @@ import * as React from 'react';
 import CardContainer from './CardContainer';
 import config from './config';
 import produce from 'immer';
-import audioPlayer, { AUDIO_KEYS } from './AudioPlayer';
 
 export interface ILevelProps {
     sounds: string[];
     onCompletedHandler: () => void;
-    onMatchHandler: () => void;
+    onMatchHandler: (cardValue: string) => void;
 }
 
 export interface ILevelState {
@@ -54,11 +53,6 @@ export default class Level extends React.Component<ILevelProps, ILevelState> {
 
     }
 
-    successHandler = (card: string) => {
-        audioPlayer.play(AUDIO_KEYS.CORRECT);
-        this.props.onMatchHandler();
-    }
-
     componentWillReceiveProps(nextProps: ILevelProps){
         if(nextProps.sounds !== this.props.sounds){
             this.setState({remainingSounds: nextProps.sounds});
@@ -69,7 +63,7 @@ export default class Level extends React.Component<ILevelProps, ILevelState> {
         return (
             <div className='level'>
                 <CardContainer
-                    successHandler={this.successHandler}
+                    successHandler={this.props.onMatchHandler}
                     outOfCardsHandler={this.cardsFinishedHandler}
                     cardValues={this.generateCards(config.MAX_SOUND_COUNT)} />
             </div>

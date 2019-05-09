@@ -1,10 +1,10 @@
 
 .scene {
-    width: 20vmax;
-    height: 25vmax;
+    width: 20vmin;
+    height: 25vmin;
     max-width: 200px;
     max-height: 250px;
-    margin: 1vmax;
+    margin: 1vmin;
     perspective: 600px;
   }
   
@@ -15,6 +15,7 @@
     transform-style: preserve-3d;
     cursor: pointer;
     position: relative;
+    border-radius: 10px;
   }
   
   .card.flipped {

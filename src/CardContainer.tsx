@@ -3,12 +3,12 @@ import './CardContainer.css';
 import FlipCard, { Card } from './FlipCard';
 import produce from 'immer';
 import config from './config';
-import audioPlayer, { AUDIO_KEYS } from './AudioPlayer';
+import audioPlayer from './AudioPlayer';
 
 export interface ICardContainerProps {
     cardValues: string[],
     outOfCardsHandler: (cardsUsed: string[]) => void;
-    successHandler: (card: string) => void;
+    successHandler: (cardValue: string) => void;
 }
 
 export interface ICardContainerState {
@@ -83,7 +83,7 @@ export default class CardContainer extends React.Component<ICardContainerProps, 
                         });
                     });
 
-                    this.props.successHandler(clickedCardValue);
+                    this.props.successHandler(clickedCardValue.toLowerCase());
                     this.setState(nextState);
                 }, config.DELAY)
                 this.setState(this.getNextStateForFlip(clickedCardValue));

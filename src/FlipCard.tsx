@@ -6,6 +6,7 @@ export type CardState = '' | 'flipped' | 'invisible';
 export type Card = {
   value: string;
   state: CardState;
+  className?: string;
 }
 
 export interface IFlipCardProps extends Card {
@@ -13,7 +14,7 @@ export interface IFlipCardProps extends Card {
 }
 
 export default function FlipCard(props: IFlipCardProps) {
-  return (<div className="scene scene--card">
+  return (<div className={`scene scene--card  ${props.className}`}>
     <div className={`card ${props.state}`} onClick={() => props.clickHandler(props.value)} >
       <div className="card__face card__face--front"><img src={cardCoverImg} /></div>
       <div className="card__face card__face--back d-flex justify-content-center flex-column">

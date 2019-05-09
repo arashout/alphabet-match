@@ -7,15 +7,16 @@
 - [x] Fix the stupid offset caused by flip animation
 - [ ] Recreate L sound, because it is weird
 - [ ] Fix bug where quick flipping causes no audio on the second flip
+- [ ] Fix bug where if the letter is in the same place it doesn't re-render (Firefox only...)
 ## Features:
 - [x] Add sound effects for successfully matching and failing to match 
 - [ ] Add multiple rounds
 - [x] Randomize the cards
 - [ ] Add fade-out animation for succesful match (Use pose?)
 - [x] Use a warmer color pallete to reduce eye strain
-- [ ] Add menu for difficulty settings
+- [ ] Add menu for levels settings
 - [ ] Add button to reduce audio playback speed
-
+- [ ] Add score indicator
 # Attributions
 ## Icons
 - (Slow Snail Audio Playback) slow by Davide Dosse Dossena from the Noun Project
