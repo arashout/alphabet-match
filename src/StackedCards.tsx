@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import FlipCard from "./FlipCard";
 import './StackedCards.css'
+import audioPlayer from './AudioPlayer';
 
 // vmin
 const _defaultDiff = 0.5;
@@ -24,8 +25,8 @@ function generateStackingCSS(children: any[]): string {
 }
 const StackedCardConainerStyled = styled.div`
   position: relative;
-  width: 22vmin;
-  height: 30vmin;
+  width: 20vmin;
+  height: 25vmin;
   ${(props: any) => generateStackingCSS(props.children)}
 `;
 
@@ -36,13 +37,12 @@ export interface IStackedCardsProps {
 
 export default function StackedCards(props: IStackedCardsProps) {
   return (
-    <div className='stacked-card-container d-flex flex-column justify-content-center align-items-center'>
-      <div className='display-3 text-dark'>{props.cardValues.length}</div>
-      <StackedCardConainerStyled >
+    <div className='stacked-card-container d-flex justify-content-center align-items-center'>
+      <div className='display-3 text-dark m-3'>{props.cardValues.length}</div>
+      <StackedCardConainerStyled>
         {props.cardValues.map((cv, i) => <FlipCard className='stacked-card'
-          key={cv} value={cv} state='flipped' clickHandler={() => console.log("clicked")} />)}
+          key={cv} value={cv} state='flipped' clickHandler={() => audioPlayer.play(cv[0].toLowerCase())} />)}
       </StackedCardConainerStyled>
-
     </div>
 
   );

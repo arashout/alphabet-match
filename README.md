@@ -9,6 +9,7 @@
 - [ ] Fix bug where quick flipping causes no audio on the second flip
 - [ ] Fix bug where if the letter is in the same place it doesn't re-render (Firefox only...)
 - [ ] Refactor so I'm not using so many different CSS methods
+- [ ] Fix screen-size issue with cards
 ## Features:
 - [x] Add sound effects for successfully matching and failing to match 
 - [x] Add multiple rounds
