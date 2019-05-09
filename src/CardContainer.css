@@ -3,6 +3,6 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 
-    width: 70vw;
+    width: 80vmin;
     max-width: 800px;
 }
