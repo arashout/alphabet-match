@@ -6,6 +6,7 @@
    - Use Enum to describe card state
 - [x] Fix the stupid offset caused by flip animation
 - [ ] Recreate L sound, because it is weird
+- [ ] Fix bug where quick flipping causes no audio on the second flip
 ## Features:
 - [x] Add sound effects for successfully matching and failing to match 
 - [ ] Add multiple rounds

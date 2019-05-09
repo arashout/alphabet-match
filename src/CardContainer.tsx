@@ -3,18 +3,16 @@ import './CardContainer.css';
 import FlipCard, { Card } from './FlipCard';
 import produce from 'immer';
 import config from './config';
-import { AUDIO_KEYS } from './Game';
+import audioPlayer, { AUDIO_KEYS } from './AudioPlayer';
 
 export interface ICardContainerProps {
     cardValues: string[],
     outOfCardsHandler: (cardsUsed: string[]) => void;
     successHandler: (card: string) => void;
-    audioPlayer: (sound: string) => void;
 }
 
 export interface ICardContainerState {
     cards: Card[];
-
 }
 
 
@@ -37,11 +35,11 @@ export default class CardContainer extends React.Component<ICardContainerProps, 
         if (card.state === 'invisible') {
             return card;
         } else if (card.state === '') {
-            this.props.audioPlayer(card.value.toLowerCase());
+            audioPlayer.playFlip(card.value.toLowerCase());
             return { value: card.value, state: 'flipped' };
         }
         else {
-            this.props.audioPlayer(AUDIO_KEYS.FLIP);
+            audioPlayer.playFlip();
             return { value: card.value, state: '' };
         }
     }
