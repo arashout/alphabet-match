@@ -5,7 +5,7 @@
 - [x] Do not remove cards from the DOM, instead disable so that remaining cards do not slide
    - Use Enum to describe card state
 - [x] Fix the stupid offset caused by flip animation
-- [ ] Recreate L sound, because it is weird
+- [x] Recreate L sound, because it is weird
 - [ ] Fix bug where quick flipping causes no audio on the second flip
 - [ ] Fix bug where if the letter is in the same place it doesn't re-render (Firefox only...)
 - [ ] Refactor so I'm not using so many different CSS methods

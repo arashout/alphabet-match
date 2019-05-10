@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './FlipCard.css';
-import cardCoverImg from './assets/card_cover.jpg';
+import cardCoverImg from './assets/images/card_cover.jpg'
 import { isiOS } from './shared';
 
 export type CardState = '' | 'flipped' | 'invisible';

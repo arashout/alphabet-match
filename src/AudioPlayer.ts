@@ -9,9 +9,9 @@ export const AUDIO_KEYS = {
 class AudioPlayer {
     private audioMap: Map<string, HTMLAudioElement>;
     constructor(sounds: string[]){
-        this.audioMap = new Map(sounds.map(s => [s, new Audio(require(`./assets/sounds/${s}.mp3`))]));
-        this.audioMap.set(AUDIO_KEYS.CORRECT, new Audio(require('./assets/correct.wav')));
-        this.audioMap.set(AUDIO_KEYS.FLIP, new Audio(require('./assets/flip.wav')));
+        this.audioMap = new Map(sounds.map(s => [s, new Audio(require(`./assets/alphabet_sounds/${s}.mp3`))]));
+        this.audioMap.set(AUDIO_KEYS.CORRECT, new Audio(require('./assets/game_sounds/correct.wav')));
+        this.audioMap.set(AUDIO_KEYS.FLIP, new Audio(require('./assets/game_sounds/flip.wav')));
     }
     playFlip(sound?: string): void {
         const flipAudio = this.audioMap.get(AUDIO_KEYS.FLIP) as HTMLAudioElement;

@@ -30,7 +30,7 @@
   .card__face--back {
     overflow: auto; /* Hacky fix for overflow on phones */
     transform: rotateY(180deg);
-    background-image: url(./assets/paper.jpg);
+    background-image: url(./assets/images/paper.jpg);
   }
 
     /* ne = no-effects*/
@@ -49,7 +49,7 @@
   }
   .card-ne--back {
     overflow: auto; /* Hacky fix for overflow on phones */
-    background-image: url(./assets/paper.jpg);
+    background-image: url(./assets/images/paper.jpg);
     width: 100%;
     height: 100%;
   }
