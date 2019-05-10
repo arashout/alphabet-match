@@ -1,8 +1,8 @@
 
 .scene {
-    width: 160px;
-    height: 200px;
-    margin: 10px;
+    width: var(--card-width);
+    height: var(--card-height);
+    margin: var(--card-margin);
     perspective: 600px;
   }
   
@@ -35,9 +35,9 @@
 
     /* ne = no-effects*/
   .scene-ne {
-    width: 160px;
-    height: 200px;
-    margin: 10px;
+    width: var(--card-width);
+    height: var(--card-height);
+    margin: var(--card-margin);
   }
   
   .card-ne {
