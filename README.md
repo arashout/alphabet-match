@@ -1,4 +1,12 @@
 # Description
+A simple matching game built to help my grandma learn the different letters of the Engligh alphabet and their corresponding sounds. 
+Built using React.js with TypeScript.
+
+# Motivation
+I could not find any games teaching the alphabet aimed at adults trying to learn English as a second language. Most language learning games assume pre-requisite knowledge of the alphabet and games that do teach the alphabet are primarily aimed at kids.
+
+# Demo
+![Demo](demo.gif)
 
 # TODO:
 ## Fixes:
@@ -19,6 +27,7 @@
 - [ ] Add menu for levels settings
 - [ ] Add button to reduce audio playback speed
 - [x] Add score indicator
+
 # Attributions
 ## Icons
 - (Slow Snail Audio Playback) slow by Davide Dosse Dossena from the Noun Project
