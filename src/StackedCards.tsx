@@ -40,7 +40,7 @@ export default function StackedCards(props: IStackedCardsProps) {
     <div className='stacked-card-container d-flex justify-content-center align-items-center'>
       <div className='display-3 text-dark m-3'>{props.cardValues.length}</div>
       <StackedCardConainerStyled>
-        {props.cardValues.map((cv, i) => <FlipCard className='stacked-card'
+        {props.cardValues.slice(-10).map((cv, i) => <FlipCard className='stacked-card'
           key={cv} value={cv} state='flipped' clickHandler={() => audioPlayer.play(cv[0].toLowerCase())} />)}
       </StackedCardConainerStyled>
     </div>

@@ -23,4 +23,9 @@ const consonantsReduced = [
 const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
 const allSounds = consonantsReduced.concat(vowels);
 
-export {consonantsReduced, vowels, allSounds};
+function isiOS(){
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const _iOSDevice = !!navigator.platform.match(/iPhone|iPod|iPad/);
+    return iOS || _iOSDevice;
+}
+export {consonantsReduced, vowels, allSounds, isiOS};

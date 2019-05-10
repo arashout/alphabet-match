@@ -33,6 +33,28 @@
     background-image: url(./assets/paper.jpg);
   }
 
+    /* ne = no-effects*/
+  .scene-ne {
+    width: 160px;
+    height: 200px;
+    margin: 10px;
+  }
+  
+  .card-ne {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+  }
+  .card-ne--back {
+    overflow: auto; /* Hacky fix for overflow on phones */
+    background-image: url(./assets/paper.jpg);
+    width: 100%;
+    height: 100%;
+  }
+
+
   img {
       width: 100%;
       height: 100%;
