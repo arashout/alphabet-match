@@ -5,9 +5,9 @@ import './StackedCards.css'
 import audioPlayer from './AudioPlayer';
 
 // vmin
-const _defaultDiff = 3;
+const _defaultDiff = 2;
 const _cardWidth = 160;
-const _narrowingAmount = 3;
+const _narrowingAmount = 2;
 
 // TODO: Get rid of styled components
 function generateStackingCSS(children: any[]): string {
@@ -18,6 +18,7 @@ function generateStackingCSS(children: any[]): string {
     position: absolute;
     top: ${_defaultDiff * (n - i)}px;
     width: ${_cardWidth - _narrowingAmount * i}px;
+    min-width: 140px;
     max-width: 200px;
   }`
   }

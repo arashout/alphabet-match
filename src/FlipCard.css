@@ -28,7 +28,7 @@
   }
  
   .card__face--back {
-    overflow: auto; /* Hacky fix for overflow on phones */
+    overflow: visible; /* Hacky fix for overflow on phones */
     transform: rotateY(180deg);
     background-image: url(./assets/images/paper.jpg);
   }
